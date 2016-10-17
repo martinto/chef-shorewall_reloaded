@@ -3,6 +3,10 @@ shorewall_reloaded CHANGELOG
 
 This file is used to list changes made in each version of the shorewall_reloaded cookbook.
 
+0.4.0
+-----
+  Added support for Shorewall 5
+
 0.3.2
 -----
 - [Claudio Cesar Sanchez Tejeda] - Removed the symbols from the template files

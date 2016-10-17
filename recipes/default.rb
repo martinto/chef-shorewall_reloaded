@@ -21,6 +21,10 @@
 require 'set'
 
 enabled=(node['shorewall']['enabled'] ? 1 : 0 )
+version='4'
+if node['shorewall']['version'] == 5
+  version='5'
+end
 
 package "shorewall" do
   action :install
@@ -33,16 +37,25 @@ end
     mode 0600
     owner "root"
     group "root"
+    variables(
+      :version => version
+    )
     notifies :restart, "service[shorewall]", :delayed
   end
 
 end
 
-template "/etc/shorewall/shorewall.conf"
+template "/etc/shorewall/shorewall.conf" do
+    source "shorewall.conf.erb"
+    variables(
+      :version => version
+    )
+    notifies :restart, "service[shorewall]", :delayed
+end
 
 template "/etc/default/shorewall" do
   source "default.erb"
-  variables( 
+  variables(
     :startup => enabled,
     :default => node['shorewall']['default']
   )

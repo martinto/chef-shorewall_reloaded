@@ -74,6 +74,12 @@ Attributes
     <td><tt>false</tt></td>
   </tr>
   <tr>
+    <td><tt>['shorewall']['version']</tt></td>
+    <td>Integer</td>
+    <td>Shorewall 4 or 5</td>
+    <td><tt>4</tt></td>
+  </tr>
+  <tr>
     <td><tt>['shorewall']['default']['options']</tt></td>
     <td>String</td>
     <td>Global start/restart/stop options</td>
@@ -231,9 +237,9 @@ Examples:
       "description": "Accept NTP connections from the firewall to the network",
       "action": "NTP(ACCEPT)", "source": "fw", "dest": "net"
     },
-    { 
-      "description": "Incoming SSH to firewall", 
-      "source": "all", "dest": "fw", "proto": "tcp", "dest_port": 22, "action": "ACCEPT" 
+    {
+      "description": "Incoming SSH to firewall",
+      "source": "all", "dest": "fw", "proto": "tcp", "dest_port": 22, "action": "ACCEPT"
     },
     {
       "description": "Accept HTTP/HTTPS connections to internet",
@@ -266,7 +272,7 @@ Examples:
   "tunnels": [
     { "type": "ipsec", "zone": "net", "gateway": "0.0.0.0/0", "gateway_zones": "vpn" }
   ]
-}  
+}
 ```
 
 - Setting Masquerade

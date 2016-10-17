@@ -1,4 +1,6 @@
 default['shorewall']['enabled'] = false
+# Supports 4 or 5
+default['shorewall']['version'] = 4
 
 default['shorewall']['default']['options'] = ""
 default['shorewall']['default']['wait_interface'] = false
